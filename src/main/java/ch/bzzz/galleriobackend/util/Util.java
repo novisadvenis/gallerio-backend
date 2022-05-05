@@ -17,6 +17,9 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Utility Class
+ */
 @Component
 public class Util {
 
@@ -31,6 +34,13 @@ public class Util {
     }
 
 
+    /**
+     * GetMetaData method extract the metadata from the inputstream of file
+     * @param inputStream type InputStream. This the File to parse to get the metadata
+     * @return List<MetaDataModel>. List of MetaDataModel object
+     * @throws ImageProcessingException
+     * @throws IOException
+     */
     public static List<MetaDataModel> getMetaData(InputStream inputStream) throws ImageProcessingException, IOException {
         Metadata metadata = ImageMetadataReader.readMetadata(inputStream);
         List<MetaDataModel> metaDataList = new ArrayList<>();
@@ -49,6 +59,14 @@ public class Util {
         return metaDataList;
     }
 
+    /**
+     * CreateThumbnail method handles the creation of thumbnail from inputstream of the image
+     * @param inputStream type InputStream. This is the inputstream of the image
+     * @param name type string. This is the image name
+     * @param type type string. This is the mime type of the image
+     * @return byte[]. returns the byte array of the created thumbnail
+     * @throws IOException
+     */
     public static byte[] createThumbnail(InputStream inputStream, String name, String type) throws IOException {
         byte[] scaledImageBytes = null;
         try {
@@ -69,7 +87,11 @@ public class Util {
         return scaledImageBytes;
     }
 
-
+    /**
+     * Rescale method handles the rescale of the image according to the original orentation of the image
+     * @param src type BufferedImage. This is the image file
+     * @return BufferedImage. This is the image file
+     */
     private static BufferedImage rescale(BufferedImage src) {
         final Scalr.Mode mode;
 

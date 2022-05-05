@@ -6,6 +6,9 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import java.util.Optional;
 
+/**
+ * Repository Class for ImaageModel Entity
+ */
 @RepositoryRestResource(collectionResourceRel = "image", path = "image")
 public interface ImageRepository extends JpaRepository<ImageModel, Long> {
     Optional<ImageModel> findByName(String name);

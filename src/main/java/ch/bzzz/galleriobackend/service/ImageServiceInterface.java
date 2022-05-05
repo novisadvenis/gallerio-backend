@@ -8,6 +8,9 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ *  Interface to defined all the service
+ */
 public interface ImageServiceInterface {
     ImageModel get(String name);
     ImageModel get(long id);

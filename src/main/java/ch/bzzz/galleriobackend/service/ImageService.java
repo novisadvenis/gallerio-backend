@@ -16,6 +16,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Service Class for Image. Implements ImageServiceInterface
+ */
 @Service
 public class ImageService implements ImageServiceInterface {
 
@@ -28,6 +31,11 @@ public class ImageService implements ImageServiceInterface {
         this.metaDataRepository = metaDataRepository;
     }
 
+    /**
+     * Get method service handles the search of image by name
+     * @param name type string. This is the identifier
+     * @return ImageModel object
+     */
     @Override
     public ImageModel get(String name) {
         final Optional<ImageModel> retrievedImage = imageRepository.findByName(name);
@@ -44,6 +52,11 @@ public class ImageService implements ImageServiceInterface {
         return false;
     }
 
+    /**
+     * DeleteImage method service handle the deletion of image by id
+     * @param id type long. This is the identifier
+     * @return boolean. return always true.
+     */
     @Override
     public boolean deleteImage(long id) {
         imageRepository.deleteById(id);
@@ -60,6 +73,12 @@ public class ImageService implements ImageServiceInterface {
         return false;
     }
 
+    /**
+     * Save method service handles the saving of Image by specified file
+     * @param file type MultipartFile. This is the image file that will saved in database
+     * @return boolean. return true if the request was successfull else false
+     * @throws IOException
+     */
     @Override
     public boolean save(MultipartFile file) throws IOException {
         List<MetaDataModel> metaDataModelList = new ArrayList<>();
@@ -80,6 +99,12 @@ public class ImageService implements ImageServiceInterface {
         return true;
     }
 
+    /**
+     * UpdateMetaData method service handles the updating request of value defined
+     * @param metaDataId type long. This is the identifier
+     * @param value type string. This is the value which will replace the existing value
+     * @return boolean. returns true if service is successful else false.
+     */
     @Override
     public boolean updateMetaData(long metaDataId, String value) {
         Optional<MetaDataModel> metaDataModel = metaDataRepository.findById((long) metaDataId);
@@ -91,12 +116,22 @@ public class ImageService implements ImageServiceInterface {
         return false;
     }
 
+    /**
+     * GetAll method service handles the getting of all Images in database
+     * @return List<ImageModel>. returns the list of ImageModel objects
+     */
     @Override
     public List<ImageModel> getAll() {
         List<ImageModel> imageModelList = imageRepository.findAll();
         return imageModelList;
     }
 
+    /**
+     * UpdateImageName method service handles the updating of the image name with new name defined
+     * @param oldName type string. This is the identifier
+     * @param newName type string. This value will replace the existing value
+     * @return boolean. return true if the service was successful else false.
+     */
     @Override
     public boolean updateImageName(String oldName, String newName) {
         Optional<ImageModel> imageModel =  imageRepository.findByName(oldName);
@@ -108,6 +143,12 @@ public class ImageService implements ImageServiceInterface {
         return false;
     }
 
+    /**
+     * UpdateImageName method service handles the updating of image name with name defined
+     * @param id type long. This is the identifier
+     * @param name type string. This value will replace the existing value
+     * @return boolean. return true if the service was successful else false
+     */
     @Override
     public boolean updateImageName(long id, String name) {
         Optional<ImageModel> imageModel =  imageRepository.findById((long) id);
@@ -119,12 +160,23 @@ public class ImageService implements ImageServiceInterface {
         return false;
     }
 
+    /**
+     * DeleteMetaData method service handles the deletion of Metadata
+     * @param id type long. This is the identifier
+     * @return boolean. returns always true
+     */
     @Override
     public boolean deleteMetaData(long id) {
         metaDataRepository.deleteById(id);
         return true;
     }
 
+    /**
+     * SaveMetaData method service handles the creation of new Metadata object
+     * @param metaDataModel type MetaDataModel. Json Object with same key value attribute as defined
+     * in MetaDataModelClass
+     * @return boolean. return always true.
+     */
     @Override
     public boolean saveMetaData(MetaDataModel metaDataModel) {
         metaDataRepository.save(metaDataModel);

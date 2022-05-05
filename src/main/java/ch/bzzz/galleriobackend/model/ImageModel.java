@@ -5,6 +5,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.persistence.*;
 import java.util.List;
 
+/**
+ * Entity Class for Image
+ */
 @Entity
 @Table(name = "image")
 public class ImageModel {

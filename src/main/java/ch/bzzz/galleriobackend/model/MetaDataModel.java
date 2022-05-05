@@ -2,6 +2,9 @@ package ch.bzzz.galleriobackend.model;
 
 import javax.persistence.*;
 
+/**
+ * Entity class for Metadata
+ */
 @Entity
 @Table(name = "metadata")
 public class MetaDataModel {

@@ -25,6 +25,7 @@ public class MetaDataController {
 
     /**
      * Update method handles the request to change metadata value
+     * @Allowed only HTTP GET request accepted
      * @param metaDataId type long. This is the identifier
      * @param value type string. This is the value that will replace the existing value in Database
      * @return
@@ -38,9 +39,10 @@ public class MetaDataController {
     }
 
     /**
-     * Delte
-     * @param metaDataId
-     * @return
+     * Delete method handles the delete request from client
+     * @Allowed only HTTP DELETE request accepted
+     * @param metaDataId type long. This is the identifier
+     * @return ResponseEntity with string value
      */
     @DeleteMapping(path = "delete/{metaDataId}")
     public ResponseEntity<String> delete(@PathVariable("metaDataId") long metaDataId) {
@@ -49,6 +51,12 @@ public class MetaDataController {
                 : ResponseEntity.ok("deleting was not successful");
     }
 
+    /**
+     * Create method handles the create request of new metadata from the client
+     * @Allowed only HTTP POST request accepted
+     * @param metaDataModel type MetaDataModel. Json Object with same key value as defined in the MetaDataModel Class
+     * @return ResponseEntity with string value
+     */
     @PostMapping
     public ResponseEntity<String> create(@RequestBody MetaDataModel metaDataModel) {
         return imageService.saveMetaData(metaDataModel) ?
