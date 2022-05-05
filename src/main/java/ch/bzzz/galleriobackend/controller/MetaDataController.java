@@ -8,8 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * Controller Class for MetaDataModel
+ */
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000") // needed to allow Cross-origin request
 @RequestMapping(path = "metadata")
 public class MetaDataController {
 
@@ -20,6 +23,12 @@ public class MetaDataController {
         this.imageService = imageService;
     }
 
+    /**
+     * Update method handles the request to change metadata value
+     * @param metaDataId type long. This is the identifier
+     * @param value type string. This is the value that will replace the existing value in Database
+     * @return
+     */
     @GetMapping(path="update/{metaDataId}")
     public ResponseEntity<String> update(@PathVariable("metaDataId") long metaDataId,
                                                  @RequestParam("value") String value) {
@@ -28,6 +37,11 @@ public class MetaDataController {
                 : ResponseEntity.ok("updating was not successful");
     }
 
+    /**
+     * Delte
+     * @param metaDataId
+     * @return
+     */
     @DeleteMapping(path = "delete/{metaDataId}")
     public ResponseEntity<String> delete(@PathVariable("metaDataId") long metaDataId) {
         return imageService.deleteMetaData(metaDataId) ?
