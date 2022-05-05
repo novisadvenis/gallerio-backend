@@ -26,6 +26,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     // https://mvnrepository.com/artifact/com.drewnoakes/metadata-extractor
     implementation 'com.drewnoakes:metadata-extractor:2.16.0'
+    // https://mvnrepository.com/artifact/org.imgscalr/imgscalr-lib
+    implementation 'org.imgscalr:imgscalr-lib:4.2'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
