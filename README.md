@@ -5,6 +5,8 @@
  you install all the dependencies.
  Then you just start the project.
  
+ ##`backup.sql`is for importing mysql data in your enviroment
+ 
  ## Configurations
  under /resource application.properties is the target size of the image defined.
  also the allowed maximum size of image file.
